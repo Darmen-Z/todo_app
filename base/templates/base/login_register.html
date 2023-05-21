@@ -1,0 +1,36 @@
+<div>
+    {% if page == 'login' %}
+    <div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email">
+            <hr>
+            <label for="password">Password</label>
+            <input id="password" type="password" name="password">
+            <hr>
+            <input type="submit" value="Submit">
+        </form>
+        <div>
+            <p>Haven't signed up yet?</p>
+            <a href="{% url 'register' %}">Sign up</a>
+        </div>
+    </div>
+    {% else %}
+    <div>
+        <!--        {% for message in messages %}-->
+        <!--        <p>{{message}}</p>-->
+        <!--        {% endfor %}-->
+        <form action="" method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form__group form__group">
+                <label>{{field.label}}</label>
+                {{field}}
+            </div>
+            {% endfor %}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    {% endif %}
+</div>

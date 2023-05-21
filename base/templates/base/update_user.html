@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<h2>Edit profile</h2>
+
+<div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+        <div>
+            <label>{{field.label}}</label>
+            {{field}}
+        </div>
+        {% endfor %}
+
+
+        <a href="{% url 'home' %}">Cancel</a>
+        <input type="submit">
+
+    </form>
+</div>
+
+{% endblock content %}
